@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<!--    <script src="./demo.js"></script>-->
+</head>
+<body>
+        <input id="searchTerm" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button onclick="searchItunes()" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+        <div id="itemContainer"></div>
+
+</body>
+<script>
+    function printResults(items){
+        var str = ''
+        items.forEach(function(item) {
+            str += `<li> Artist: ${item.artistName} - Collection: ${item.collectionName}</li>`;
+        });
+
+        str += '</ul>';
+        document.getElementById("itemContainer").innerHTML = str;
+        // for (items)
+        //     item.artistName  item.collectionName
+    }
+    function searchItunes() {
+        var term = $('#searchTerm').val();
+        console.log(term);
+        var jqxhr = $.ajax( "https://itunes.apple.com/search?term=" + term + "&limit=10" )
+            .done(function( data ) {
+                var json = $.parseJSON(data)
+                printResults(json.results)
+            })
+            .fail(function(err) {
+                console.log(err)
+                alert( "error" );
+            })
+            .always(function() {
+                alert( "complete" );
+            });
+
+    }
+
+
+</script>
+</html>
