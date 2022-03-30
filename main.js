@@ -1,6 +1,6 @@
 function printResults(items){
+    $('#itemContainer').empty();
     items.forEach(function(item) {
-        console.log(item)
         $('#itemContainer').append(`<div class="item">
         <div class="imageHolder">
             <img src="${item.artworkUrl100}" alt="Book Cover">
@@ -19,31 +19,15 @@ function printResults(items){
 }
 function searchItunes() {
     var term = $('#searchTerm').val();
-    console.log(term);
     var jqxhr = $.ajax( "https://itunes.apple.com/search?term=" + term + "&limit=10" )
         .done(function( data ) {
             var json = $.parseJSON(data)
+            console.log(json)
             printResults(json.results)
         })
         .fail(function(err) {
-            console.log(err)
             alert( "error" );
-        })
-        .always(function() {
         });
 
 }
 
-$( document ).ready(function() {
-  
-
-    
-
-});
-
-
-    // $('#itemContainer').append(`
-    // <h3>${data.results[i].collectionName}</h3>
-    // <p>By: ${data.results[i].artistName.join(', ')}</p>
-    // <img src="${data.results[i].collectionViewUrl}" alt="Book Cover">
-    // `);
