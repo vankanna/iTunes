@@ -5,8 +5,9 @@ function printResults(items){
         <div class="imageHolder">
             <img src="${item.artworkUrl100}" alt="Book Cover">
         </div>
-            <div class="info"><h4>${item.collectionName}</h4>
+            <div class="info"><h4>${item.trackName}</h4>
             <p>By: ${item.artistName}</p>
+            <a href="${item.collectionViewUrl}">See more...</a>
         </div>
     
         <div class="clearfloat"></div>
@@ -29,7 +30,6 @@ function searchItunes() {
             alert( "error" );
         })
         .always(function() {
-            alert( "complete" );
         });
 
 }
