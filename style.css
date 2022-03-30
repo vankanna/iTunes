@@ -1,4 +1,47 @@
+#container {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 50px;
+}
 
-button {
-    display: inline-block;
+h1 {
+  text-align: center;
+}
+
+#searchHolder {
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 25px;
+}
+
+#searchTerm {
+  display: inline;
+  width: 70%;
+}
+
+#searchHolder button {
+  width: 25%;
+  display: inline;
+}
+
+.itemContainer {
+}
+
+.item {
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+
+.imageHolder {
+  padding: 25px;
+  float: left;
+}
+
+.info {
+  padding: 25px;
+  float: left;
+}
+
+.clearfloat {
+  clear: both;
 }
